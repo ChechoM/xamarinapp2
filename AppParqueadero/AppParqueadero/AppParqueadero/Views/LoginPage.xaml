@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:AppParqueadero.ViewModels"
+             mc:Ignorable="d"
+             x:Class="AppParqueadero.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.BindingContext>
+        <viewModel:LoginViewModel/>
+    </ContentPage.BindingContext >
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+
+            <Image Source="logo.png" />
+            <Entry Text="{Binding Username}" Placeholder="Usuario" Margin="10" />
+            <Entry Text="{Binding Password}" Placeholder="Contraseña" IsPassword="True" Margin="10"/>
+            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}" Style="{StaticResource ButtonPrymary}"/>
+            <Label Text="{Binding WelcomeMessage}" FontSize="Subtitle" TextColor="{Binding MessageColor}" HorizontalOptions="Center" Margin="0,30,0,0" IsVisible="{Binding IsLoggerIn}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
