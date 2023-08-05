@@ -1,19 +1,17 @@
-﻿using AppParqueadero;
+﻿using AppParqueadero.Data.API;
+using AppParqueadero.Helpers.HttpMessageHandlers;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using AppParqueadero.Data.API;
-using AppParqueadero.Helpers.HttpMessageHandlers;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Refit;
 using System;
-using System.ComponentModel;
 using System.Linq;
 using Xamarin.Forms.Internals;
 
 namespace AppParqueadero
 {
-    internal class Startup
+    public static class Startup
     {
         private const string INTERFACE_PREFIX = "I";
         private const string SERVICES_NAMESPACE = "ExampleApp.Services";
