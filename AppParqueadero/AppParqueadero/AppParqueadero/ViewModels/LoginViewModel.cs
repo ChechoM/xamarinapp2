@@ -90,7 +90,7 @@ namespace AppParqueadero.ViewModels
                 {
                     WelcomeMessage = "Inicio de sesión exitoso, " + "¡Bienvenido! " + Username + "!";
                     MessageColor = Color.Green;
-                    await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(ClientPage)}");
                 }
                 else
                 {
