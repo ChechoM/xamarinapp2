@@ -11,7 +11,7 @@ using Xamarin.Forms.Internals;
 
 namespace AppParqueadero
 {
-    public static class Startup
+    internal  class Startup
     {
         private const string INTERFACE_PREFIX = "I";
         private const string SERVICES_NAMESPACE = "AppParqueadero.Services";

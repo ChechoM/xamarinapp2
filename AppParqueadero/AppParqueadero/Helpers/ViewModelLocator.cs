@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Reflection;
 using Xamarin.Forms;
 
-namespace AppParqueadero.Utilities
+namespace AppParqueadero.Helpers
 {
     public class ViewModelLocator
     {

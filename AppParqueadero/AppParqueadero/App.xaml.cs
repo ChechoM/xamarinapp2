@@ -12,8 +12,8 @@ namespace AppParqueadero
         public App()
         {
             InitializeComponent();
-
             Startup.Initialize();
+
             MainPage = new AppShell();
         }
 

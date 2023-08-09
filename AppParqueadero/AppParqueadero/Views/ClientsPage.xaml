@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:AppParqueadero.ViewModels"
              xmlns:models="clr-namespace:AppParqueadero.Data.Models"
-             xmlns:utility="clr-namespace:AppParqueadero.Utilities"
+             xmlns:utility="clr-namespace:AppParqueadero.Helpers"
              utility:ViewModelLocator.AutoWireViewModel="True"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:DataType="viewModels:ClientsViewModel"
