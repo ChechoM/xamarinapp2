@@ -7,22 +7,21 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel;
+
 namespace AppParqueadero.ViewModels
 {
     public class ClientsViewModel : BaseViewModel
     {
         private readonly IClientService _clientService;
+        public ICommand AppearingCommand { get; set; }
+        public ObservableRangeCollection<Client> Clients { get; set; } = new ObservableRangeCollection<Client>();
 
         public ClientsViewModel(IClientService clientService)
         {
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
             Title = "Clients";
             _clientService = clientService;
-        }
-
-        public ObservableRangeCollection<Client> Clients { get; set; } = new ObservableRangeCollection<Client>();
-
-        public ICommand AppearingCommand { get; set; }
+        }    
 
         private async Task OnAppearingAsync()
         {

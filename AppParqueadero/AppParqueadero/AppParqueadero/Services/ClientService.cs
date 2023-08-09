@@ -1,4 +1,4 @@
-﻿using AppParqueadero.Data.API;
+﻿using AppParqueadero.Data.Api;
 using AppParqueadero.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace AppParqueadero.Services
 
             try
             {
-                var response = await _clientApi.GetClients();
+                var response = await _clientApi.GetClientsAsync();
                 clients = response.ToList();
                 return clients;
             }

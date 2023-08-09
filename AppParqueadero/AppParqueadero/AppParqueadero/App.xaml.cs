@@ -12,9 +12,8 @@ namespace AppParqueadero
         public App()
         {
             InitializeComponent();
-            Startup.Initialize();
 
-            DependencyService.Register<MockDataStore>();
+            Startup.Initialize();
             MainPage = new AppShell();
         }
 

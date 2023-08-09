@@ -1,4 +1,4 @@
-﻿using AppParqueadero.Data.API;
+﻿using AppParqueadero.Data.Api;
 using AppParqueadero.Helpers.HttpMessageHandlers;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -14,9 +14,9 @@ namespace AppParqueadero
     public static class Startup
     {
         private const string INTERFACE_PREFIX = "I";
-        private const string SERVICES_NAMESPACE = "ExampleApp.Services";
-        //private const string SINGLE_INSTANCE_SERVICES_NAMESPACE = "ExampleApp.Services.SingleInstance";
-        private const string VIEW_MODELS_NAMESPACE = "ExampleApp.ViewModels";
+        private const string SERVICES_NAMESPACE = "AppParqueadero.Services";
+        //private const string SINGLE_INSTANCE_SERVICES_NAMESPACE = "AppParqueadero.Services.SingleInstance";
+        private const string VIEW_MODELS_NAMESPACE = "AppParqueadero.ViewModels";
 
         private static IContainer _container;
 
@@ -41,10 +41,6 @@ namespace AppParqueadero
 
             containerBuilder.RegisterType<AppShell>();
 
-            // Single Instance Services
-            //containerBuilder.RegisterAssemblyTypes(typeof(App).Assembly)
-            //    .Where(type => type.Namespace != null && type.Namespace == SINGLE_INSTANCE_SERVICES_NAMESPACE)
-            //    .As(type => type.GetInterfaces().FirstOrDefault(iface => iface.Name == INTERFACE_PREFIX + type.Name)).SingleInstance();
 
             // Services
             containerBuilder.RegisterAssemblyTypes(typeof(App).Assembly)

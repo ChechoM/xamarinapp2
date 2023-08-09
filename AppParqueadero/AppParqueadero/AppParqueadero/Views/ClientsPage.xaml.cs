@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace AppParqueadero.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ClientPage : ContentView
+    public partial class ClientsPage : ContentPage
     {
-        public ClientPage()
+        public ClientsPage()
         {
             InitializeComponent();
         }

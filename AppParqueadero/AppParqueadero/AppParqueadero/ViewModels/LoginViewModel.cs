@@ -86,11 +86,11 @@ namespace AppParqueadero.ViewModels
             if (ValidateFiels())
             {
                 //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
-                if (Username == "smontoya" && Password == "1234")
+                if (Username == "s" && Password == "s")
                 {
                     WelcomeMessage = "Inicio de sesión exitoso, " + "¡Bienvenido! " + Username + "!";
                     MessageColor = Color.Green;
-                    await Shell.Current.GoToAsync($"//{nameof(ClientPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
                 }
                 else
                 {

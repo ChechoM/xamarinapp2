@@ -1,5 +1,4 @@
-﻿using AppParqueadero;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Reflection;
 using Xamarin.Forms;

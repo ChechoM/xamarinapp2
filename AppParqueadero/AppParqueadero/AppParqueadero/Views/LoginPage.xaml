@@ -17,7 +17,7 @@
             <Entry Text="{Binding Username}" Placeholder="Usuario" Margin="10" />
             <Entry Text="{Binding Password}" Placeholder="Contraseña" IsPassword="True" Margin="10"/>
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}" Style="{StaticResource ButtonPrymary}"/>
-            <Label Text="{Binding WelcomeMessage}" FontSize="Subtitle" TextColor="{Binding MessageColor}" HorizontalOptions="Center" Margin="0,30,0,0" IsVisible="{Binding IsLoggerIn}"/>
+            <!--<Label Text="{Binding WelcomeMessage}" FontSize="Subtitle" TextColor="{Binding MessageColor}" HorizontalOptions="Center" Margin="0,30,0,0" IsVisible="{Binding IsLoggerIn}"/>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

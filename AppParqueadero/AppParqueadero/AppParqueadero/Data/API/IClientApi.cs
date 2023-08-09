@@ -5,12 +5,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 
-namespace AppParqueadero.Data.API
+namespace AppParqueadero.Data.Api
 {
     public interface IClientApi
     {
         [Get("/Clients")]
-        Task<List<Client>> GetClients();
+        Task<List<Client>> GetClientsAsync();
     }
 
 }
