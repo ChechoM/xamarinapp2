@@ -16,7 +16,7 @@ namespace AppParqueadero.Services
             _clientApi = clientApi;
         }
 
-        public async Task<List<Client>> GetClients()
+        public async Task<List<Client>> GetClientsAsync()
         {
             var clients = new List<Client>();
 

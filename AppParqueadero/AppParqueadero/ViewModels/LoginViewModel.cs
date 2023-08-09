@@ -1,5 +1,4 @@
 ﻿using AppParqueadero.Views;
-using AppParqueadero.ViewModels;
 using Xamarin.Forms;
 
 namespace AppParqueadero.ViewModels
@@ -11,7 +10,6 @@ namespace AppParqueadero.ViewModels
         private bool _showMessage;
         private string _welcomeMessage;
         private Color _messageColor;
-
         public string Username
         {
             get => _username;
@@ -72,9 +70,8 @@ namespace AppParqueadero.ViewModels
                 }
             }
         }
-        public Command LoginCommand { get; }
 
-        public string UserName { get; set; }
+        public Command LoginCommand { get; }
 
         public LoginViewModel()
         {
@@ -83,12 +80,14 @@ namespace AppParqueadero.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
+            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
             if (ValidateFiels())
             {
-                //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
-                if (Username == "s" && Password == "s")
+                //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                if (Username == "s" && Password == "s")
                 {
-                    WelcomeMessage = "Inicio de sesión exitoso, " + "¡Bienvenido! " + Username + "!";
+                    WelcomeMessage = "Inicio de sesión exitoso, " + "¡Bienvenido Campeón! " + Username + "!";
                     MessageColor = Color.Green;
                     await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
                 }
@@ -96,10 +95,15 @@ namespace AppParqueadero.ViewModels
                 {
                     ShowMessage = true;
                     MessageColor = Color.Red;
-                    WelcomeMessage = "Usuario o contraseña incorrectos";
+                    WelcomeMessage = "Usuario o contraseña incorrectos, copie bien sonso";
                 }
             }
-
+            else
+            {
+                ShowMessage = true;
+                MessageColor = Color.Orange;
+                WelcomeMessage = "Usuario o contraseña vacios, hay que copiar alguito";
+            }
         }
 
         private bool ValidateFiels()

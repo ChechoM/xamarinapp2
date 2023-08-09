@@ -11,7 +11,6 @@ namespace AppParqueadero.ViewModels
 {
     public class BaseViewModel : ObservableObject
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
         public bool IsBusy

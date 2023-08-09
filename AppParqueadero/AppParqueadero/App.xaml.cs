@@ -1,8 +1,4 @@
-﻿using AppParqueadero.Services;
-using AppParqueadero.Views;
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace AppParqueadero
 {
@@ -12,9 +8,9 @@ namespace AppParqueadero
         public App()
         {
             InitializeComponent();
-            Startup.Initialize();
 
-            MainPage = new AppShell();
+            Startup.Initialize();
+            MainPage = Startup.Resolve<AppShell>();
         }
 
         protected override void OnStart()

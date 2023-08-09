@@ -1,8 +1,5 @@
 ﻿using AppParqueadero.Data.Models;
 using AppParqueadero.Services;
-using AppParqueadero.ViewModels;
-using AppParqueadero.Data.Models;
-using AppParqueadero.Services;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,15 +10,17 @@ namespace AppParqueadero.ViewModels
     public class ClientsViewModel : BaseViewModel
     {
         private readonly IClientService _clientService;
-        public ICommand AppearingCommand { get; set; }
-        public ObservableRangeCollection<Client> Clients { get; set; } = new ObservableRangeCollection<Client>();
 
         public ClientsViewModel(IClientService clientService)
         {
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
             Title = "Clients";
             _clientService = clientService;
-        }    
+        }
+
+        public ObservableRangeCollection<Client> Clients { get; set; } = new ObservableRangeCollection<Client>();
+
+        public ICommand AppearingCommand { get; set; }
 
         private async Task OnAppearingAsync()
         {
@@ -33,7 +32,7 @@ namespace AppParqueadero.ViewModels
             try
             {
                 IsBusy = true;
-                var clients = await _clientService.GetClients();
+                var clients = await _clientService.GetClientsAsync();
                 if (clients != null)
                 {
                     Clients.ReplaceRange(clients);
