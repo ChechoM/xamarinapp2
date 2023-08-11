@@ -1,28 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:AppParqueadero.ViewModels"
              xmlns:models="clr-namespace:AppParqueadero.Data.Models"
+             xmlns:controls="clr-namespace:AppParqueadero.Controls"
+             xmlns:viewModels="clr-namespace:AppParqueadero.ViewModels"
              xmlns:utility="clr-namespace:AppParqueadero.Helpers"
              utility:ViewModelLocator.AutoWireViewModel="True"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:DataType="viewModels:ClientsViewModel"
-             x:Class="AppParqueadero.Views.ClientsPage">
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="AppParqueadero.Views.ClientsPage"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ClientDefaultTemplate" x:DataType="models:Client">
+                <StackLayout Margin="0,5">
+                    <Frame CornerRadius="15"
+                           BackgroundColor="AliceBlue">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Text="{Binding Name}" TextColor="White" />
+                            <Label Grid.Column="1" Text="{Binding Dna}" TextColor="White"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="ClientOneToFiveTemplate" x:DataType="models:Client">
+                <StackLayout Margin="0,5">
+                    <Frame CornerRadius="15"
+                           BackgroundColor="LightGray">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Text="{Binding Name}" TextColor="White"/>
+                            <Label Grid.Column="1" Text="{Binding Dna}" TextColor="White"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="ClientSixToTenTemplate" x:DataType="models:Client">
+                <StackLayout Margin="0,5">
+                    <Frame CornerRadius="15"
+                           BackgroundColor="LightCoral">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Text="{Binding Name}" TextColor="White"/>
+                            <Label Grid.Column="1" Text="{Binding Dna}" TextColor="White"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+
+            <controls:ClientTemplateSelector x:Key="ClientTemplateSelector"
+                                             DefaultTemplate="{StaticResource ClientDefaultTemplate}"
+                                             OneToFiveTemplate="{StaticResource ClientOneToFiveTemplate}"
+                                             SixToTenTemplate="{StaticResource ClientSixToTenTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
     <ContentPage.Content>
         <StackLayout>
-            <CollectionView ItemsSource="{Binding Clients}"
-                            EmptyView="No Clients to display">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Client">
-                        <StackLayout>
-                            <Label Text="{Binding Name}"/>
-                            <Label Text="{Binding Dna}"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+            <CollectionView  ItemsSource="{Binding Clients}"
+                            EmptyView="No Clients to display"
+                            ItemTemplate="{StaticResource ClientTemplateSelector}">
+                <CollectionView.Header >
+                    <Grid ColumnDefinitions="*,*" Background="White ">
+                        <Label Text="Name" TextColor="{StaticResource Secondary}" BackgroundColor="White" Padding="10" />
+                        <Label Grid.Column="1" Text="DNA" TextColor="{StaticResource Secondary}" BackgroundColor="White" Padding="10"/>
+                    </Grid>
+                </CollectionView.Header>
             </CollectionView>
         </StackLayout>
     </ContentPage.Content>

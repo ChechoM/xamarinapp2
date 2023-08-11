@@ -1,4 +1,5 @@
-﻿using AppParqueadero.Views;
+﻿using AppParqueadero.Resx;
+using AppParqueadero.Views;
 using Xamarin.Forms;
 
 namespace AppParqueadero.ViewModels
@@ -93,17 +94,21 @@ namespace AppParqueadero.ViewModels
                 }
                 else
                 {
-                    ShowMessage = true;
-                    MessageColor = Color.Red;
-                    WelcomeMessage = "Usuario o contraseña incorrectos, copie bien sonso";
+                    await Application.Current.MainPage.DisplayAlert(
+                            AppResources.LoginPageInvalidLoginTitle,
+                            AppResources.LoginPageInvalidLoginMessage,
+                            AppResources.OkText);
                 }
+
             }
             else
             {
-                ShowMessage = true;
-                MessageColor = Color.Orange;
-                WelcomeMessage = "Usuario o contraseña vacios, hay que copiar alguito";
+                await Application.Current.MainPage.DisplayAlert(
+                        AppResources.LoginPageInvalidLoginTitle,
+                        AppResources.LoginPageInvalidLoginMessage,
+                        AppResources.OkText);
             }
+
         }
 
         private bool ValidateFiels()

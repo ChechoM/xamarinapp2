@@ -7,20 +7,33 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Primary">#84cc04</Color>
+            <Color x:Key="Secondary">#91d424</Color>
 
             <Style x:Key="ButtonPrymary"  TargetType="Button">
-                <Setter Property="TextColor" Value="white"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource Secondary}"></Setter>
                 <Setter Property="BorderRadius" Value="10"></Setter>
             </Style>
+
+            <Style TargetType="ContentPage">
+                <Setter Property="Background" Value="{StaticResource Secondary}"></Setter>
+            </Style>
+            <Style TargetType="StackLayout">
+                <Setter Property="Background" Value="{StaticResource Secondary}"></Setter>
+                <Setter Property="Padding" Value="20,20"></Setter>
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="Background" Value="White"></Setter>
+            </Style>
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource Secondary}"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="BackgroundColor" Value="White" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
