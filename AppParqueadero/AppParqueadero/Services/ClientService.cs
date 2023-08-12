@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppParqueadero.Services
 {
-    public class ClientService : IClientService
+    public class ClientService : IClientService 
     {
         private readonly IClientApi _clientApi;
 
