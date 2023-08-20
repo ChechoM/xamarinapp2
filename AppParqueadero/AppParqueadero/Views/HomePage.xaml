@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:AppParqueadero.ViewModels"
+             xmlns:utility="clr-namespace:AppParqueadero.Helpers"
+             xmlns:resx="clr-namespace:AppParqueadero.Resx"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="viewModels:HomeViewModel"
+             xmlns:local="clr-namespace:AppParqueadero.Extensions;assembly=AppParqueadero"
+             mc:Ignorable="d"
+             x:Class="AppParqueadero.Views.HomePage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <StackLayout>
+            <ContentView x:Name="ModalContent"/>
+            <Image Source="logo.png" />
+
+            <Button VerticalOptions="Center" Text="Ir login" Command="{Binding RouteComand}" CommandParameter="1" Style="{StaticResource ButtonPrymary}"/>
+            <Button VerticalOptions="Center" Text="Ir a mapa" Command="{Binding RouteComand}" CommandParameter="2" Style="{StaticResource ButtonPrymary}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
