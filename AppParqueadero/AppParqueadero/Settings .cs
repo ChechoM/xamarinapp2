@@ -6,7 +6,7 @@ namespace AppParqueadero
 {
     public static class Settings
     {
-        public const string ApiBaseUri = "http://10.101.1.106:5000/api";
+        public const string ApiBaseUri = "http://192.168.1.17:5000/api";
 
          
     }

@@ -17,8 +17,8 @@
                     <Frame CornerRadius="15"
                            BackgroundColor="AliceBlue">
                         <Grid ColumnDefinitions="*,*">
-                            <Label Text="{Binding Name}" TextColor="White" />
-                            <Label Grid.Column="1" Text="{Binding Dna}" TextColor="White"/>
+                            <Label Text="{Binding name}" TextColor="White" />
+                            <Label Grid.Column="1" Text="{Binding nit}" TextColor="White"/>
                         </Grid>
                     </Frame>
                 </StackLayout>
@@ -28,8 +28,8 @@
                     <Frame CornerRadius="15"
                            BackgroundColor="LightGray">
                         <Grid ColumnDefinitions="*,*">
-                            <Label Text="{Binding Name}" TextColor="White"/>
-                            <Label Grid.Column="1" Text="{Binding Dna}" TextColor="White"/>
+                            <Label Text="{Binding name}" TextColor="White"/>
+                            <Label Grid.Column="1" Text="{Binding nit}" TextColor="White"/>
                         </Grid>
                     </Frame>
                 </StackLayout>
@@ -39,8 +39,8 @@
                     <Frame CornerRadius="15"
                            BackgroundColor="LightCoral">
                         <Grid ColumnDefinitions="*,*">
-                            <Label Text="{Binding Name}" TextColor="White"/>
-                            <Label Grid.Column="1" Text="{Binding Dna}" TextColor="White"/>
+                            <Label Text="{Binding name}" TextColor="White"/>
+                            <Label Grid.Column="1" Text="{Binding nit}" TextColor="White"/>
                         </Grid>
                     </Frame>
                 </StackLayout>
@@ -62,8 +62,8 @@
                             ItemTemplate="{StaticResource ClientTemplateSelector}">
                 <CollectionView.Header >
                     <Grid ColumnDefinitions="*,*" Background="White ">
-                        <Label Text="Name" TextColor="{StaticResource Secondary}" BackgroundColor="White" Padding="10" />
-                        <Label Grid.Column="1" Text="DNA" TextColor="{StaticResource Secondary}" BackgroundColor="White" Padding="10"/>
+                        <Label Text="name" TextColor="{StaticResource Secondary}" BackgroundColor="White" Padding="10" />
+                        <Label Grid.Column="1" Text="nit" TextColor="{StaticResource Secondary}" BackgroundColor="White" Padding="10"/>
                     </Grid>
                 </CollectionView.Header>
             </CollectionView>

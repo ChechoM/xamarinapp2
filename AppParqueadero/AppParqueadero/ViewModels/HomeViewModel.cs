@@ -27,7 +27,7 @@ namespace AppParqueadero.ViewModels
 
         private async Task OnAppearingAsync()
         {
-            await getImagenes();
+            
         }
 
         private async void enrutar(object parametro)
@@ -38,24 +38,14 @@ namespace AppParqueadero.ViewModels
                         await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
                     break;
                 case "2":
-                    //si opcion
+                        await Shell.Current.GoToAsync($"//{nameof(MapasPage)}");
                     break;
                 default: 
                     break;
             }
 
         }
-        public async Task getImagenes()
-        {
-
-             Imagenes = new ObservableRangeCollection<ListaImagenesDto>()
-            {            
-                 new ListaImagenesDto {imagen ="parqueadero1.jpg"},
-                 new ListaImagenesDto {imagen ="parqueadero2.jpg"},
-                 new ListaImagenesDto {imagen ="parqueadero3.jpg"}
-            };
-
-        }
+        
 
     }
 }

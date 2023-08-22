@@ -16,8 +16,8 @@ namespace AppParqueadero.Controls
                 return DefaultTemplate;
             }
 
-            var dnaLength = client.Dna.Length;
-            var lastDigit = client.Dna.Substring(dnaLength - 1);
+            var dnaLength = client.nit.Length;
+            var lastDigit = client.nit.Substring(dnaLength - 1);
 
             if (int.TryParse(lastDigit, out var intValue))
             {
