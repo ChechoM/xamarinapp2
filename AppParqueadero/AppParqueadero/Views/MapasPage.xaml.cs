@@ -30,6 +30,9 @@ namespace AppParqueadero.Views
             var positionFalsa = new Position(6.248932112041483, -75.57290152500107);
             ClientLocationMap.MoveToRegion(new MapSpan(positionFalsa, 0.05, 0.05));
 
+            Pin MiUbicacion = new Pin() { Position = positionFalsa, Type = PinType.Place, Label = "mi Ubicacion falsa"};
+            ClientLocationMap.Pins.Add(MiUbicacion);
+
             foreach (var item in _viewModel.Client)
                 {
                     if (
@@ -39,31 +42,33 @@ namespace AppParqueadero.Views
                     {
                         var position = new Position(Convert.ToDouble(item.latitud), Convert.ToDouble(item.longitud));
 
-                        Pin pin = new Pin();
-                        //pin.MarkerClicked += Map_PinClicked(position);                        
+                        Pin pin = new Pin();                       
                         pin.Position = position;
                         pin.Label = item.name;
                         pin.Type = PinType.Place;
 
-                        ClientLocationMap.Pins.Add(pin);
+
+                        pin.MarkerClicked += (sender, e)=> { Map_PinClicked(sender, position); };
+
+                    ClientLocationMap.Pins.Add(pin);
 
 
 
 
-                    }
+                }
                 }
         }
-        private   void Map_PinClicked(object sender, MapClickedEventArgs e)
+        private   void Map_PinClicked(object sender, Position posicionClick)
         {
             
             Position positionFalsa = new Position(6.248932112041483, -75.57290152500107);
-            Position posicionClick = new Position(e.Position.Latitude, e.Position.Longitude);
+            
 
             RutasGoogle rutasGoogle = _viewModel._googleMapsService.GetRuta(positionFalsa, posicionClick);
             var ruta = new Xamarin.Forms.Maps.Polyline
             {
-                StrokeColor = Color.Black,
-                StrokeWidth = 4
+                StrokeColor = Color.Blue,
+                StrokeWidth = 10
             };
 
             if (rutasGoogle?.routes?.Any() == true)
@@ -76,6 +81,8 @@ namespace AppParqueadero.Views
                 {
                     ruta.Geopath.Add(coordinate);
                 }
+                ClientLocationMap.MapElements.Clear();
+                ClientLocationMap.MapElements.Add(ruta);
             }
         }
 

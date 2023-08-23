@@ -14,7 +14,7 @@
     </ContentPage.Behaviors>
     <ContentPage.Content>
         <StackLayout BackgroundColor="white">
-            <maps:Map x:Name="ClientLocationMap" IsShowingUser="True" MapClicked="Map_PinClicked"/>
+            <maps:Map x:Name="ClientLocationMap" IsShowingUser="True"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
