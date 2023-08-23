@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:AppParqueadero.Data.Models"
-             xmlns:controls="clr-namespace:AppParqueadero.Controls"
              xmlns:viewModels="clr-namespace:AppParqueadero.ViewModels"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:DataType="viewModels:MapasViewModel"
@@ -13,8 +12,16 @@
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="white">
-            <maps:Map x:Name="ClientLocationMap" IsShowingUser="True"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout BackgroundColor="white">
+                <maps:Map x:Name="ClientLocationMap" IsShowingUser="True" HeightRequest="400"/>
+                <Frame >
+                    <StackLayout BackgroundColor="white">
+                        <Label BackgroundColor="white" x:Name="txtDistancia"/>
+                        <Label BackgroundColor="white" x:Name="txtTiempo" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>        
     </ContentPage.Content>
 </ContentPage>

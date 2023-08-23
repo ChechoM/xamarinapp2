@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace AppParqueadero.ViewModels
@@ -21,7 +22,7 @@ namespace AppParqueadero.ViewModels
             _clientService = clientService;
         }
 
-        public ObservableRangeCollection<Client> Client { get; set; } = new ObservableRangeCollection<Client>();
+        public ObservableRangeCollection<Client> Clients { get; set; } = new ObservableRangeCollection<Client>();
 
         public ICommand AppearingCommand { get; set; }
 
@@ -38,7 +39,7 @@ namespace AppParqueadero.ViewModels
                 var clients = await _clientService.GetClientsAsync();
                 if (clients != null)
                 {
-                    Client.ReplaceRange(clients);
+                    Clients.ReplaceRange(clients);
                 }
             }
             catch (Exception ex)

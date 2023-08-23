@@ -40,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Converter\" />
     <Folder Include="Resources\Styles\" />
     <Folder Include="Utilities\" />
   </ItemGroup>
