@@ -1,19 +1,22 @@
-﻿using AppParqueadero.Data.Models;
+﻿using AppParqueadero.Data.Api;
+using AppParqueadero.Data.Models;
 using AppParqueadero.Services;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel;
+using Xamarin.Forms.Maps;
 
 namespace AppParqueadero.ViewModels
 {
     class MapasViewModel: BaseViewModel
     {
-        private readonly IClientService _clientService;
-        private ObservableRangeCollection<Client> _clients;
+        public readonly IClientService _clientService;
+        public readonly IGoogleMapsService _googleMapsService;
 
-        public MapasViewModel(IClientService clientService) 
+        public MapasViewModel(IClientService clientService, IGoogleMapsService googleService) 
         {
+            _googleMapsService = googleService;
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
             _clientService = clientService;
         }
@@ -47,5 +50,6 @@ namespace AppParqueadero.ViewModels
                 IsBusy = false;
             }
         }
+
     }
 }

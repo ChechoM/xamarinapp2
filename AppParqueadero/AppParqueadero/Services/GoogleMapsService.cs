@@ -1,4 +1,6 @@
-﻿using AppParqueadero.Data.Models;
+﻿using AppParqueadero.Data.Api;
+using AppParqueadero.Data.Models;
+using AppParqueadero.Data.Models.Dto;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,34 +14,42 @@ namespace AppParqueadero.Services
 {
     public class GoogleMapsService : IGoogleMapsService
     {
-
-        public GoogleMapsService() { }
-
-        public async Task<RutasGoogle> GetRuta(Position posicionInicial, Position posicionFinal)
+        private readonly IGoogleApi _googleApi;
+        public GoogleMapsService(IGoogleApi googleApi) 
         {
+            _googleApi = googleApi;
+        }
+
+        public  RutasGoogle GetRuta(Position posicionInicial, Position posicionFinal)
+        {
+            string origin = $"{posicionInicial.Latitude},{posicionInicial.Longitude}";
+            string destino = $"{posicionFinal.Latitude},{posicionFinal.Longitude}";
+
             string UrlBase = "https://maps.googleapis.com/maps/api/directions/json?";
-            
+
             var parametros = new List<string>();
             parametros.Add(agregarParametrso("avoid", "highways"));
-            parametros.Add(agregarParametrso("destination", $"{posicionFinal.Latitude}, {posicionFinal.Longitude}"));
+            parametros.Add(agregarParametrso("destination", $"{destino}"));
             parametros.Add(agregarParametrso("mode", "DRIVING"));
-            parametros.Add(agregarParametrso("origin", $"{posicionInicial.Latitude}, {posicionInicial.Longitude}"));
+            parametros.Add(agregarParametrso("origin", $"{origin}"));
             parametros.Add(agregarParametrso("key", "AIzaSyA4n6z3GSPg9YqeKRFsnvvSsd2q9YpL9pI"));
 
-            string UrlParametros = String.Concat(parametros).Substring(0, String.Concat(parametros).Length-1);
+            string UrlParametros = String.Concat(parametros).Substring(0, String.Concat(parametros).Length - 1);
             HttpClientHandler httpClientHandler =  GetInsecureHandler();
             using (HttpClient client = new HttpClient(httpClientHandler))
             {
 
-                HttpResponseMessage response = await client.GetAsync($"{UrlBase}{UrlParametros}");
+                HttpResponseMessage response =  client.GetAsync($"{UrlBase}{UrlParametros}").Result;
 
-                object objRespuesta = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
+                RutasGoogle objRespuesta = JsonConvert.DeserializeObject<RutasGoogle>(response.Content.ReadAsStringAsync().Result);
 
-                return Task.FromResult(objRespuesta);
+                return objRespuesta;
 
             }
+
         }
 
+        
         public string agregarParametrso(string key, string value)
         {
             return $"{key}={value}&";

@@ -1,4 +1,5 @@
 ﻿using AppParqueadero.Services;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -15,13 +16,25 @@ namespace AppParqueadero.Helpers.HttpMessageHandlers
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            if (!request.RequestUri.AbsolutePath.EndsWith("Login"))
+            
+
+            if (!request.RequestUri.AbsolutePath.EndsWith("Login") && !request.RequestUri.AbsolutePath.EndsWith("GetRutas"))
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _appUserSettingService.UserToken);
             }
 
-            var response = await base.SendAsync(request, cancellationToken);
-            return response;
+
+            try
+            {
+
+                var response = await base.SendAsync(request, cancellationToken);
+                return response;
+            }
+            catch (Exception e)
+            {
+                var error = e;
+                throw new Exception();
+            }
         }
     }
 }
