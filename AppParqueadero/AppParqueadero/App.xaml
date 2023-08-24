@@ -8,20 +8,23 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#84cc04</Color>
-            <Color x:Key="Secondary">##ffffff</Color>
+            <Color x:Key="Secondary">#ffffff</Color>
 
             <Style x:Key="ButtonPrymary"  TargetType="Button">
                 <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
                 <Setter Property="BorderRadius" Value="10"></Setter>
             </Style>
+            <Style x:Key="ButtonSecundary"  TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource Secondary}"></Setter>
+                <Setter Property="BorderRadius" Value="10"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"></Setter>
+            </Style>
 
             <Style TargetType="ContentPage">
                 <Setter Property="Background" Value="{StaticResource Secondary}"></Setter>
+                <Setter Property="Padding" Value="3"></Setter>
             </Style>
 
-            <Style TargetType="Entry">
-                <Setter Property="Background" Value="White"></Setter>
-            </Style>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{StaticResource Secondary}"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">

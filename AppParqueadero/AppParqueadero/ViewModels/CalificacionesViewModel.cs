@@ -1,4 +1,5 @@
-﻿using AppParqueadero.Services;
+﻿using AppParqueadero.Data.Models;
+using AppParqueadero.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,9 +26,21 @@ namespace AppParqueadero.ViewModels
         public int Calificacion { get => _Calificacion; set => SetProperty(ref _Calificacion, value); }
         public long IdVisita { get => _IdVisita; set => SetProperty(ref _IdVisita, value); }
 
-        public void calificarParqueadero(object obj)
+        public async void calificarParqueadero(object obj)
         {
-            var respuesta = _calificacionesService.ValidarCalificacion(IdVisita);
+            var respuesta = await _calificacionesService.ValidarCalificacion(IdVisita);
+            if (respuesta == "Ok") 
+            {
+                Calificaciones calificaciones = new Calificaciones()
+                {
+                    IdVisita = IdVisita,
+                    Calificacion = Calificacion,
+                    Comentario = Comentario
+                };
+
+                
+                var respuestaPost = await _calificacionesService.PostCalificacionesAsync(calificaciones);
+            }
         }
     }
 }

@@ -10,6 +10,6 @@ namespace AppParqueadero.Services
     interface ICalificacionesService
     {
         public Task<HttpResponseMessage> PostCalificacionesAsync(Calificaciones calificaciones);
-        public string ValidarCalificacion(long id);
+        public Task<string> ValidarCalificacion(long id);
     }
 }

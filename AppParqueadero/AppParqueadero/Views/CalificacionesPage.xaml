@@ -5,25 +5,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:AppParqueadero.ViewModels"
              xmlns:utility="clr-namespace:AppParqueadero.Helpers"
-             xmlns:resx="clr-namespace:AppParqueadero.Resx"
              utility:ViewModelLocator.AutoWireViewModel="True"
-             x:DataType="viewModels:LoginViewModel"
-             xmlns:local="clr-namespace:AppParqueadero;assembly=AppParqueadero"
+             x:DataType="viewModels:CalificacionesViewModel"
              mc:Ignorable="d"
-             x:Class="AppParqueadero.Views.LoginPage"
+             x:Class="AppParqueadero.Views.CalificacionesPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
-            <Frame CornerRadius="10" Padding="4" BackgroundColor="#e6e6e6">
+            <Frame CornerRadius="10" Padding="4" BackgroundColor="#e0e0e0">
                 <Entry Text="{Binding Comentario}" Placeholder="Comentario"  />
             </Frame>
-            <Frame CornerRadius="10" Padding="4" Margin="5" BackgroundColor="#e6e6e6">
-                <Entry Text="{Binding Calificacion}" Placeholder="Calificación" IsPassword="True"/>
+            <Frame CornerRadius="10" Padding="4" Margin="5" BackgroundColor="#e0e0e0">
+                <Entry Text="{Binding Calificacion}" Placeholder="Calificación" />
             </Frame>
-            <Frame CornerRadius="10" Padding="4" BackgroundColor="#e6e6e6">
+            <Frame CornerRadius="10" Padding="4" BackgroundColor="#e0e0e0">
                 <Entry Text="{Binding IdVisita}" Placeholder="Numero de referencia de la visita"  />
             </Frame>
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding EnviarCalificacion}" Style="{StaticResource ButtonPrymary}"/>
+            <Button VerticalOptions="Center" Text="Enviar" Command="{Binding EnviarCalificacion}" Style="{StaticResource ButtonSecundary}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

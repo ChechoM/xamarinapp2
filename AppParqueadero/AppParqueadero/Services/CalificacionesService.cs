@@ -18,16 +18,20 @@ namespace AppParqueadero.Services
             _CalificacionesApi = calificacionesApi;
             _IVisitasApi = iVisitasApi;
         }
-        public Task<HttpResponseMessage> PostCalificacionesAsync(Calificaciones calificaciones)
+        public async Task<HttpResponseMessage> PostCalificacionesAsync(Calificaciones calificaciones)
         {
-           return _CalificacionesApi.PostCalificacionesAsync(calificaciones);
+           var respuesta =  await _CalificacionesApi.PostCalificacionesAsync(calificaciones);
+            return respuesta;
         }
 
-        public string ValidarCalificacion(long id)
+        public async Task<string> ValidarCalificacion(long id)
         {
-            var respuesta = _IVisitasApi.ValidarVisitaAsync(id).Result.Content.ReadAsStringAsync().Result;
+            
+             var respuesta = await _IVisitasApi.ValidarVisitaAsync(id);
+             var respuestaString = await respuesta.Content.ReadAsStringAsync();
+            return respuestaString;
 
-            return respuesta;
+
         }
 
     }

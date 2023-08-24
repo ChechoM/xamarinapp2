@@ -40,6 +40,9 @@ namespace AppParqueadero.ViewModels
                 case "2":
                         await Shell.Current.GoToAsync($"//{nameof(MapasPage)}");
                     break;
+                case "3":
+                    await Shell.Current.GoToAsync($"//{nameof(CalificacionesPage)}");
+                    break;
                 default: 
                     break;
             }

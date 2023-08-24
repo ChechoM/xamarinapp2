@@ -22,7 +22,7 @@
             <Image Source="{local:ImageResource AppParqueadero.Resources.Images.logo.png}" />
             <Button VerticalOptions="Center" Text="Ir login" Command="{Binding RouteComand}" CommandParameter="1" Style="{StaticResource ButtonPrymary}"/>
             <Button VerticalOptions="Center" Text="Ir a mapa" Command="{Binding RouteComand}" CommandParameter="2" Style="{StaticResource ButtonPrymary}"/>
-            <Button VerticalOptions="Center" Text="Crea un feedback" Command="{Binding RouteComand}" CommandParameter="2" Style="{StaticResource ButtonPrymary}"/>
+            <Button VerticalOptions="Center" Text="Crea un feedback" Command="{Binding RouteComand}" CommandParameter="3" Style="{StaticResource ButtonPrymary}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

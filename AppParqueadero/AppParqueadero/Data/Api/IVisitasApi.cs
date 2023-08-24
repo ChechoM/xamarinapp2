@@ -10,7 +10,7 @@ namespace AppParqueadero.Data.Api
 {
     internal interface IVisitasApi
     {
-        [Get("/ValidarVisita")]
+        [Get("/Visitas/ValidarVisita")]
         Task<HttpResponseMessage> ValidarVisitaAsync(long id);
     }
 }
