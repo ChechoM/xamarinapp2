@@ -18,7 +18,7 @@ namespace AppParqueadero.Helpers.HttpMessageHandlers
         {
             
 
-            if (!request.RequestUri.AbsolutePath.EndsWith("Login") && !request.RequestUri.AbsolutePath.EndsWith("GetRutas"))
+            if (!request.RequestUri.AbsolutePath.EndsWith("Login"))
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _appUserSettingService.UserToken);
             }
