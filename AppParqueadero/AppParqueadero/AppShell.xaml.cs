@@ -11,6 +11,7 @@ namespace AppParqueadero
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(ClientDetallePage), typeof(ClientDetallePage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

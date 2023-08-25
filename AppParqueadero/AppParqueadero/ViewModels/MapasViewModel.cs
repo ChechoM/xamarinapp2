@@ -1,6 +1,9 @@
 ﻿using AppParqueadero.Data.Api;
 using AppParqueadero.Data.Models;
+using AppParqueadero.Data.Models.Dto;
 using AppParqueadero.Services;
+using AppParqueadero.Views;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -20,9 +23,12 @@ namespace AppParqueadero.ViewModels
             _googleMapsService = googleService;
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
             _clientService = clientService;
+            DetalleParqueadero = new AsyncCommand(OnClientTapped);
         }
 
+        public ICommand DetalleParqueadero { get; }
         public ObservableRangeCollection<Client> Clients { get; set; } = new ObservableRangeCollection<Client>();
+        public Client Client { get; set; } = new Client();
 
         public ICommand AppearingCommand { get; set; }
 
@@ -30,6 +36,7 @@ namespace AppParqueadero.ViewModels
         {
             await LoadData();
         }
+
 
         private async Task LoadData()
         {
@@ -50,6 +57,17 @@ namespace AppParqueadero.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        private Task OnClientTapped()
+        {
+            if (Client == null)
+            {
+                return Task.CompletedTask;
+            }
+
+
+            return Shell.Current.GoToAsync($"//{nameof(ClientDetallePage)}?{nameof(ClientDetalleViewModel.ClientId)}={Client.id}");
         }
 
     }

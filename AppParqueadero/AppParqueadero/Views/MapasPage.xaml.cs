@@ -27,7 +27,9 @@ namespace AppParqueadero.Views
         }
 
         private void _viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {     
+        {
+            contenedorDetalle.IsVisible = false;
+            ClientLocationMap.HeightRequest = 600;
             var positionFalsa = new Position(6.248932112041483, -75.57290152500107);
             ClientLocationMap.MoveToRegion(new MapSpan(positionFalsa, 0.05, 0.05));
 
@@ -56,36 +58,43 @@ namespace AppParqueadero.Views
                 }
             }
             
+            
+            
         }
         private   void Map_PinClicked(Client client, object sender, Position posicionClick)
         {
-            
-            Position positionFalsa = new Position(6.248932112041483, -75.57290152500107);       
-            RutasGoogle rutasGoogle = _viewModel._googleMapsService.GetRuta(positionFalsa, posicionClick);
-            var Distancia = rutasGoogle.routes.Select(x=> x.legs.Select(s=> s.distance.text).FirstOrDefault()).FirstOrDefault();
-            var TiempoEstimado = rutasGoogle.routes.Select(x=> x.legs.Select(s=> s.duration.text).FirstOrDefault()).FirstOrDefault();
+               
+                contenedorDetalle.IsVisible = true;
+                ClientLocationMap.HeightRequest = 400;
+                _viewModel.Client = client;
+                Position positionFalsa = new Position(6.248932112041483, -75.57290152500107);
+                RutasGoogle rutasGoogle = _viewModel._googleMapsService.GetRuta(positionFalsa, posicionClick);
+                var Distancia = rutasGoogle.routes.Select(x => x.legs.Select(s => s.distance.text).FirstOrDefault()).FirstOrDefault();
+                var TiempoEstimado = rutasGoogle.routes.Select(x => x.legs.Select(s => s.duration.text).FirstOrDefault()).FirstOrDefault();
 
-            txtDistancia.Text = $"La distancia que debe recorrer es {Distancia}";
-            txtTiempo.Text = $"El tiempo estimado en el recorrido es {TiempoEstimado}";
+                txtDistancia.Text = $"La distancia que debe recorrer es {Distancia}";
+                txtTiempo.Text = $"El tiempo estimado en el recorrido es {TiempoEstimado}";
 
-            var ruta = new Xamarin.Forms.Maps.Polyline
-            {
-                StrokeColor = Color.Blue,
-                StrokeWidth = 10
-            };
-
-            if (rutasGoogle?.routes?.Any() == true)
-            {
-                var route = rutasGoogle.routes.First();
-                var routeCoordinates = route.legs.SelectMany(leg => leg.steps.SelectMany(step => DecodePolylinePoints(step.polyline.points)));
-
-                foreach (var coordinate in routeCoordinates.ToList())
+                var ruta = new Xamarin.Forms.Maps.Polyline
                 {
-                    ruta.Geopath.Add(coordinate);
+                    StrokeColor = Color.Blue,
+                    StrokeWidth = 10
+                };
+
+                if (rutasGoogle?.routes?.Any() == true)
+                {
+                    var route = rutasGoogle.routes.First();
+                    var routeCoordinates = route.legs.SelectMany(leg => leg.steps.SelectMany(step => DecodePolylinePoints(step.polyline.points)));
+
+                    foreach (var coordinate in routeCoordinates.ToList())
+                    {
+                        ruta.Geopath.Add(coordinate);
+                    }
+                    ClientLocationMap.MapElements.Clear();
+                    ClientLocationMap.MapElements.Add(ruta);
                 }
-                ClientLocationMap.MapElements.Clear();
-                ClientLocationMap.MapElements.Add(ruta);
-            }
+            
+            
         }
 
         private IEnumerable<Position> DecodePolylinePoints(string encodedPoints)

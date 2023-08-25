@@ -7,20 +7,25 @@
              x:DataType="viewModels:MapasViewModel"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="AppParqueadero.Views.MapasPage"
-             BackgroundColor="White">
+             BackgroundColor="White"             
+             Shell.NavBarIsVisible="False">
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="white">
-                <maps:Map x:Name="ClientLocationMap" IsShowingUser="True" HeightRequest="400"/>
-                <Frame >
-                    <StackLayout BackgroundColor="white">
-                        <Label BackgroundColor="white" x:Name="txtDistancia"/>
-                        <Label BackgroundColor="white" x:Name="txtTiempo" />
-                    </StackLayout>
-                </Frame>
+                <maps:Map x:Name="ClientLocationMap" IsShowingUser="True" HeightRequest="600"/>
+                <StackLayout x:Name="contenedorDetalle">
+                    <Frame BackgroundColor="#f2fff6">
+                        <StackLayout BackgroundColor="#f2fff6" HorizontalOptions="Start">
+                            <Label BackgroundColor="#f2fff6" x:Name="txtDistancia"/>
+                            <Label BackgroundColor="#f2fff6" x:Name="txtTiempo" />
+                        </StackLayout>
+                    </Frame>
+                    <Button Style="{StaticResource ButtonSecundary}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MapasViewModel}}, Path=DetalleParqueadero}" Text="Ver mas detalles"> </Button>
+
+                </StackLayout>
             </StackLayout>
         </ScrollView>        
     </ContentPage.Content>

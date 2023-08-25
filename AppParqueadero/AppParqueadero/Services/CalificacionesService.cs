@@ -27,8 +27,8 @@ namespace AppParqueadero.Services
         public async Task<string> ValidarCalificacion(long id)
         {
             
-             var respuesta = await _IVisitasApi.ValidarVisitaAsync(id);
-             var respuestaString = await respuesta.Content.ReadAsStringAsync();
+            var respuesta = await _IVisitasApi.ValidarVisitaAsync(id);
+            var respuestaString = await respuesta.Content.ReadAsStringAsync();
             return respuestaString;
 
 

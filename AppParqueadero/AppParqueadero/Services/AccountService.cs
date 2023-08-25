@@ -1,8 +1,11 @@
 ﻿using AppParqueadero.Data.Api;
 using AppParqueadero.Data.Models.Dto;
+using AppParqueadero.Resx;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace AppParqueadero.Services
 {
@@ -25,6 +28,9 @@ namespace AppParqueadero.Services
 
                 if (response == null || response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
+                    
+                    await Application.Current.MainPage.DisplayAlert(AppResources.LoginPageInvalidLoginTitle,
+                                            AppResources.LoginPageInvalidLoginMessage, AppResources.OkText);
                     return false;
                 }
                 else

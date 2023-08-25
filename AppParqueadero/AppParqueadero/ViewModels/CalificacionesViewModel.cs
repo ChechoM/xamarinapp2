@@ -1,4 +1,5 @@
 ﻿using AppParqueadero.Data.Models;
+using AppParqueadero.Resx;
 using AppParqueadero.Services;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,14 @@ namespace AppParqueadero.ViewModels
 
                 
                 var respuestaPost = await _calificacionesService.PostCalificacionesAsync(calificaciones);
+
+                await Application.Current.MainPage.DisplayAlert(AppResources.OkText,
+                                            $"{respuesta} se agrego con exito", AppResources.OkText);
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert(AppResources.ErrorGeneralTittle,
+                                            respuesta, AppResources.OkText);
             }
         }
     }

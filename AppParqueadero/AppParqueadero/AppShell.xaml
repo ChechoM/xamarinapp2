@@ -99,6 +99,9 @@
     <FlyoutItem Title="Calificaciones" Icon="icon_about.png">
         <ShellContent Route="CalificacionesPage" ContentTemplate="{DataTemplate local:CalificacionesPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Cliente detalle" Icon="icon_about.png">
+        <ShellContent Route="ClientDetallePage" ContentTemplate="{DataTemplate local:ClientDetallePage}" />
+    </FlyoutItem>
     <!-- 
         When the Flyout is visible this defines the content to display in the flyout.
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    

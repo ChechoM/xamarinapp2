@@ -1,5 +1,6 @@
 ﻿using AppParqueadero.Data.Api;
 using AppParqueadero.Helpers.HttpMessageHandlers;
+using AppParqueadero.Services;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;

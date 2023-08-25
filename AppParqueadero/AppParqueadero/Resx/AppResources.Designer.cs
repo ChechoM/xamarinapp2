@@ -115,5 +115,12 @@ namespace AppParqueadero.Resx
                 return ResourceManager.GetString("OkText", resourceCulture);
             }
         }
+        internal static string ErrorGeneralTittle
+        {
+            get
+            {
+                return ResourceManager.GetString("ErrorGeneralTittle", resourceCulture);
+            }
+        }
     }
 }
