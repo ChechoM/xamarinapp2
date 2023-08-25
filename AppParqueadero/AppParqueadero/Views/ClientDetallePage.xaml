@@ -11,14 +11,15 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              mc:Ignorable="d"
              x:Class="AppParqueadero.Views.ClientDetallePage">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:TrueToIstring x:Key="TrueToIstring" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TrueToIstring x:Key="TrueToIstring" />
+            <converters:DateConvert x:Key="DateConvert" />
+        </ResourceDictionary>
+    </ContentPage.Resources>   
     <ContentPage.Content>
         <StackLayout>
             <Grid >
@@ -38,17 +39,17 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" Grid.Row="0"  Text="Nombre " HorizontalOptions="Start"/>
-                <Label Grid.Column="1" Grid.Row="0"  Text="{Binding Client.name}"/>
+                <Label Grid.Column="1" Grid.Row="0"  Text="{Binding Client.name, Mode=OneWay}"/>
                 <Label Grid.Column="0" Grid.Row="1"  Text="Descripcion "/>
-                <Label Grid.Column="1" Grid.Row="1"  Text="{Binding Client.descripcion}"/>
+                <Label Grid.Column="1" Grid.Row="1"  Text="{Binding Client.descripcion, Mode=OneWay}"/>
                 <Label Grid.Column="0" Grid.Row="2"  Text="Disponibilidad "/>
-                <Label Grid.Column="1" Grid.Row="2"  Text="{Binding Client.disponibilidad}"/>
+                <Label Grid.Column="1" Grid.Row="2"  Text="{Binding Client.disponibilidad, Converter={StaticResource TrueToIstring}}"/>
                 <Label Grid.Column="0" Grid.Row="3"  Text="Hora abre"/>
-                <Label Grid.Column="1" Grid.Row="3"  Text="{Binding Client.horarioAbre}"/>
+                <Label Grid.Column="1" Grid.Row="3"  Text="{Binding Client.horarioAbre, Converter={StaticResource DateConvert}}"/>
                 <Label Grid.Column="0" Grid.Row="4"  Text="Hora cierre"/>
-                <Label Grid.Column="1" Grid.Row="4"  Text="{Binding Client.horarioCierre}"/>
+                <Label Grid.Column="1" Grid.Row="4"  Text="{Binding Client.horarioCierre, Converter={StaticResource DateConvert}}"/>
                 <Label Grid.Column="0" Grid.Row="5"  Text="Direccion "/>
-                <Label Grid.Column="1" Grid.Row="5"  Text="{Binding Client.direccion}"/>
+                <Label Grid.Column="1" Grid.Row="5"  Text="{Binding Client.direccion, Mode=OneWay}"/>
                 <Label Grid.Column="0" Grid.Row="6"  Text="Tiene techo "/>
                 <Label Grid.Column="1" Grid.Row="6"  Text="{Binding Client.techo, Converter={StaticResource TrueToIstring}}"/>
                 <Label Grid.Column="0" Grid.Row="7"  Text="Tiene datafono "/>

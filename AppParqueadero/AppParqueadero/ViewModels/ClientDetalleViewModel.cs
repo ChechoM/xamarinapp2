@@ -25,7 +25,22 @@ namespace AppParqueadero.ViewModels
         public Client Client { get => _client; set => SetProperty(ref _client, value); }
 
         private long _clientId;
-        public long ClientId { get => _clientId; set => SetProperty(ref _clientId, value); }       
+        public long ClientId { get => _clientId; set => SetProperty(ref _clientId, value); }
+
+        private long _id;
+        public long Id
+        {
+
+            get => _id;
+            set
+            {
+                if (_id != value)
+                {
+                    _id = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public ClientDetalleViewModel(IClientDetalleService clientDetalleService)
         {
@@ -42,7 +57,6 @@ namespace AppParqueadero.ViewModels
             try
             {
                 IsBusy = true;
-                if (string.IsNullOrWhiteSpace(ClientId.ToString())) return;
 
                 Client = await _clientDetalleService.GetClientAsync(ClientId);
             }

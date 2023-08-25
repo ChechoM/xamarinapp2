@@ -40,8 +40,9 @@ namespace AppParqueadero.Services
                 parametros.Add(agregarParametrso("key", "AIzaSyA4n6z3GSPg9YqeKRFsnvvSsd2q9YpL9pI"));
 
                 string UrlParametros = String.Concat(parametros).Substring(0, String.Concat(parametros).Length - 1);
-                HttpClientHandler httpClientHandler = GetInsecureHandler();
-                using (HttpClient client = new HttpClient(httpClientHandler))
+                HttpClientHandler clientHandler = new HttpClientHandler();
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+                using (HttpClient client = new HttpClient(clientHandler))
                 {
 
                     HttpResponseMessage response = client.GetAsync($"{UrlBase}{UrlParametros}").Result;
@@ -73,16 +74,5 @@ namespace AppParqueadero.Services
             return $"{key}={value}&";
         }
 
-        public HttpClientHandler GetInsecureHandler()
-        {
-            HttpClientHandler handler = new HttpClientHandler();
-            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
-            {
-                if (cert.Issuer.Equals("CN=localhost"))
-                    return true;
-                return errors == System.Net.Security.SslPolicyErrors.None;
-            };
-            return handler;
-        }
     }
 }

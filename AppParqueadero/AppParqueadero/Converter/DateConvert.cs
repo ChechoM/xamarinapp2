@@ -6,16 +6,16 @@ using Xamarin.Forms;
 
 namespace AppParqueadero.Converter
 {
-    public class TrueToIstring : IValueConverter
+    public class DateConvert : IValueConverter
     {
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-           if(value is bool boolvalue)
+           if(value is string Date)
             {
-                return boolvalue ? "no" : "si";
+                return DateTime.Parse(Date).ToString("hh:mm");
             }
-            return "si";
+            return DateTime.Now.Hour;
 
         }
 

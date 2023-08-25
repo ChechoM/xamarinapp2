@@ -23,9 +23,8 @@ namespace AppParqueadero.Services
             try
             {   if (id == 0) 
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error",
-                       "Disculpas con el envio de el id del cliente vuelva a intentarlo",
-                       "acept");
+                    var respuesta = await _clientApi.GetClientAsync(1);
+                    clients = respuesta;
                     return clients;
                 }
                 else 
