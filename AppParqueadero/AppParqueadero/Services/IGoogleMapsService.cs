@@ -9,6 +9,6 @@ namespace AppParqueadero.Services
 {
     public interface IGoogleMapsService
     {
-        RutasGoogle GetRuta(Position posicionInicial, Position posicionFinal);
+        Task<RutasGoogle> GetRuta(Position posicionInicial, Position posicionFinal);
     }
 }

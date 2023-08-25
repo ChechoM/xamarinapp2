@@ -22,7 +22,7 @@ namespace AppParqueadero.Services
             _googleApi = googleApi;
         }
 
-        public  RutasGoogle GetRuta(Position posicionInicial, Position posicionFinal)
+        public async Task<RutasGoogle> GetRuta(Position posicionInicial, Position posicionFinal)
         {
             RutasGoogle objRespuesta = new RutasGoogle();
             try
@@ -45,9 +45,9 @@ namespace AppParqueadero.Services
                 using (HttpClient client = new HttpClient(clientHandler))
                 {
 
-                    HttpResponseMessage response = client.GetAsync($"{UrlBase}{UrlParametros}").Result;
-
-                    objRespuesta = JsonConvert.DeserializeObject<RutasGoogle>(response.Content.ReadAsStringAsync().Result);
+                    HttpResponseMessage response = await client.GetAsync($"{UrlBase}{UrlParametros}");
+                    var json = await response.Content.ReadAsStringAsync();
+                    objRespuesta =  JsonConvert.DeserializeObject<RutasGoogle>(json);
 
                     return objRespuesta;
 
@@ -55,7 +55,7 @@ namespace AppParqueadero.Services
             }
             catch
             {
-                 Application.Current.MainPage.DisplayAlert("Error",
+                 await Application.Current.MainPage.DisplayAlert("Error",
                        "Disculpas error integrando con google verifique de nuevo mas tarde",
                        "acept");
             }

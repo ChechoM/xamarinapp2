@@ -11,12 +11,36 @@ namespace AppParqueadero.Services
     public class ClientDetalleService: IClientDetalleService
     {
         readonly IClientApi _clientApi;
-        public ClientDetalleService( IClientApi client) 
+        readonly ICalificacionesApi _calificacionesApi;
+        public ClientDetalleService( IClientApi client, ICalificacionesApi calificacionesApi) 
         {
             _clientApi = client;
-        
+            _calificacionesApi = calificacionesApi;
+
+
         }
 
+        public async Task<List<Calificaciones>> GetCalificacionesPorCLiente(long id)
+        {
+            List < Calificaciones > respuesta = new List<Calificaciones>();
+            try
+            {
+                if (id == 0)
+                {
+                    respuesta = await _calificacionesApi.GetCalificacionesPorCLiente(1);
+                }
+                else
+                {
+                    respuesta = await _calificacionesApi.GetCalificacionesPorCLiente(id);
+                }
+               
+            }catch (Exception ex)
+            {
+                string mensaje = ex.Message;
+            }
+            return respuesta;
+
+        }
         public async Task<Client> GetClientAsync(long id)
         {
             var clients = new Client();

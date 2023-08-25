@@ -22,7 +22,9 @@ namespace AppParqueadero.ViewModels
 
 
         private Client _client;
+        private List<Calificaciones> _calificaciones;
         public Client Client { get => _client; set => SetProperty(ref _client, value); }
+        public List<Calificaciones> Calificaciones { get => _calificaciones; set => SetProperty(ref _calificaciones, value); }
 
         private long _clientId;
         public long ClientId { get => _clientId; set => SetProperty(ref _clientId, value); }
@@ -54,6 +56,13 @@ namespace AppParqueadero.ViewModels
 
         private async Task OnAppearingAsync()
         {
+
+            LoadDetalle();
+            LoadCalificaciones();
+        }
+
+        public async Task LoadDetalle()
+        {
             try
             {
                 IsBusy = true;
@@ -68,7 +77,24 @@ namespace AppParqueadero.ViewModels
             {
                 IsBusy = false;
             }
-            
+        }
+
+        public async Task LoadCalificaciones()
+        {
+            try
+            {
+                IsBusy = true;
+
+                Calificaciones = await _clientDetalleService.GetCalificacionesPorCLiente(ClientId);
+            }
+            catch (Exception ex)
+            {
+                var mensaje = ex.Message;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
     }

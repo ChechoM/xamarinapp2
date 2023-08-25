@@ -3,60 +3,130 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:AppParqueadero.Data.Models"             
+             xmlns:controls="clr-namespace:AppParqueadero.Controls"
              xmlns:viewModels="clr-namespace:AppParqueadero.ViewModels"
              xmlns:utility="clr-namespace:AppParqueadero.Helpers"
              utility:ViewModelLocator.AutoWireViewModel="True"
-              xmlns:converters="clr-namespace:AppParqueadero.Converter"
+             xmlns:converters="clr-namespace:AppParqueadero.Converter"
              x:DataType="viewModels:ClientDetalleViewModel"             
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              mc:Ignorable="d"
-             x:Class="AppParqueadero.Views.ClientDetallePage">
-    <ContentPage.Behaviors>
-        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
-    </ContentPage.Behaviors>
-    <ContentPage.Resources>
+             x:Class="AppParqueadero.Views.ClientDetallePage"
+             Title="Calificaciones"
+             >
+        <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="CalificacionesDefaulTemplate" x:DataType="models:Calificaciones">
+                <StackLayout Margin="0,5">
+                    <Frame CornerRadius="15"
+                    BackgroundColor="AliceBlue">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Text="{Binding Comentario}" TextColor="Black"  FontSize="16"/>
+                            <Label Grid.Column="1" Text="{Binding Calificacion}" TextColor="Black"  FontSize="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate> 
+            <DataTemplate x:Key="CalificacionBaja" x:DataType="models:Calificaciones">
+                <StackLayout Margin="0,5">
+                    <Frame CornerRadius="15"
+                    BackgroundColor="LightCoral">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Text="{Binding Comentario}" TextColor="white"  FontSize="16"/>
+                            <Label Grid.Column="1" Text="{Binding Calificacion}" TextColor="white"  FontSize="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="CalificacionesMedia" x:DataType="models:Calificaciones">
+                <StackLayout Margin="0,5">
+                    <Frame CornerRadius="15"
+                    BackgroundColor="AliceBlue">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Text="{Binding Comentario}" TextColor="DarkSlateGray"  FontSize="16"/>
+                            <Label Grid.Column="1" Text="{Binding Calificacion}" TextColor="DarkSlateGray"  FontSize="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="CalificacionesAlta" x:DataType="models:Calificaciones">
+                <StackLayout Margin="0,5">
+                    <Frame CornerRadius="15"
+                    BackgroundColor="GreenYellow">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Text="{Binding Comentario}" TextColor="White" FontSize="16"/>
+                            <Label Grid.Column="1" Text="{Binding Calificacion}" TextColor="White" FontSize="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+
+            <controls:CalificacionesTemplateSelector x:Key="CalificacionesTemplateSelector"
+                                        DefaultTemplate="{StaticResource CalificacionesDefaulTemplate}"
+                                        CalificacionBaja="{StaticResource CalificacionBaja}"
+                                        CalificacionesMedia="{StaticResource CalificacionesMedia}"
+                                        CalificacionesAlta="{StaticResource CalificacionesAlta}" />
+        </ResourceDictionary>
         <ResourceDictionary>
             <converters:TrueToIstring x:Key="TrueToIstring" />
             <converters:DateConvert x:Key="DateConvert" />
         </ResourceDictionary>
-    </ContentPage.Resources>   
+    </ContentPage.Resources>
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
     <ContentPage.Content>
-        <StackLayout>
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+        <ScrollView>
+            <StackLayout>                
+                <Grid Padding="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="0"  Text="Nombre " HorizontalOptions="Start"/>
-                <Label Grid.Column="1" Grid.Row="0"  Text="{Binding Client.name, Mode=OneWay}"/>
-                <Label Grid.Column="0" Grid.Row="1"  Text="Descripcion "/>
-                <Label Grid.Column="1" Grid.Row="1"  Text="{Binding Client.descripcion, Mode=OneWay}"/>
-                <Label Grid.Column="0" Grid.Row="2"  Text="Disponibilidad "/>
-                <Label Grid.Column="1" Grid.Row="2"  Text="{Binding Client.disponibilidad, Converter={StaticResource TrueToIstring}}"/>
-                <Label Grid.Column="0" Grid.Row="3"  Text="Hora abre"/>
-                <Label Grid.Column="1" Grid.Row="3"  Text="{Binding Client.horarioAbre, Converter={StaticResource DateConvert}}"/>
-                <Label Grid.Column="0" Grid.Row="4"  Text="Hora cierre"/>
-                <Label Grid.Column="1" Grid.Row="4"  Text="{Binding Client.horarioCierre, Converter={StaticResource DateConvert}}"/>
-                <Label Grid.Column="0" Grid.Row="5"  Text="Direccion "/>
-                <Label Grid.Column="1" Grid.Row="5"  Text="{Binding Client.direccion, Mode=OneWay}"/>
-                <Label Grid.Column="0" Grid.Row="6"  Text="Tiene techo "/>
-                <Label Grid.Column="1" Grid.Row="6"  Text="{Binding Client.techo, Converter={StaticResource TrueToIstring}}"/>
-                <Label Grid.Column="0" Grid.Row="7"  Text="Tiene datafono "/>
-                <Label Grid.Column="1" Grid.Row="7"  Text="{Binding Client.datafono, Converter={StaticResource TrueToIstring}}"/>
-
-                
-            </Grid>
-        </StackLayout>
+                    <Label Grid.Column="0" Grid.Row="0"  Text="Nombre " HorizontalOptions="Start"/>
+                    <Label Grid.Column="1" Grid.Row="0"  Text="{Binding Client.name, Mode=OneWay}"/>
+                    <Label Grid.Column="0" Grid.Row="1"  Text="Descripcion "/>
+                    <Label Grid.Column="1" Grid.Row="1"  Text="{Binding Client.descripcion, Mode=OneWay}"/>
+                    <Label Grid.Column="0" Grid.Row="2"  Text="Disponibilidad "/>
+                    <Label Grid.Column="1" Grid.Row="2"  Text="{Binding Client.disponibilidad, Converter={StaticResource TrueToIstring}}"/>
+                    <Label Grid.Column="0" Grid.Row="3"  Text="Hora abre"/>
+                    <Label Grid.Column="1" Grid.Row="3"  Text="{Binding Client.horarioAbre, Converter={StaticResource DateConvert}}"/>
+                    <Label Grid.Column="0" Grid.Row="4"  Text="Hora cierre"/>
+                    <Label Grid.Column="1" Grid.Row="4"  Text="{Binding Client.horarioCierre, Converter={StaticResource DateConvert}}"/>
+                    <Label Grid.Column="0" Grid.Row="5"  Text="Direccion "/>
+                    <Label Grid.Column="1" Grid.Row="5"  Text="{Binding Client.direccion, Mode=OneWay}"/>
+                    <Label Grid.Column="0" Grid.Row="6"  Text="Tiene techo "/>
+                    <Label Grid.Column="1" Grid.Row="6"  Text="{Binding Client.techo, Converter={StaticResource TrueToIstring}}"/>
+                    <Label Grid.Column="0" Grid.Row="7"  Text="Tiene datafono "/>
+                    <Label Grid.Column="1" Grid.Row="7"  Text="{Binding Client.datafono, Converter={StaticResource TrueToIstring}}"/>                    
+                </Grid>
+                <CollectionView Grid.ColumnSpan="2"
+                                Grid.Row="8" ItemsSource="{Binding Calificaciones}"
+                        EmptyView="No Clients to display"
+                        ItemTemplate="{StaticResource CalificacionesTemplateSelector}">
+                    <CollectionView.Header >
+                        <Grid ColumnDefinitions="*,*" Background="White ">
+                            <Label Text="Comentario" TextColor="Black" BackgroundColor="White" Padding="10" />
+                            <Label Grid.Column="1" Text="Calificacion" TextColor="black" BackgroundColor="White" Padding="10"/>
+                        </Grid>
+                    </CollectionView.Header>
+                </CollectionView>
+            </StackLayout>
+            
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

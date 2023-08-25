@@ -10,5 +10,6 @@ namespace AppParqueadero.Services
     {
 
         Task<Client> GetClientAsync(long id);
+        Task<List<Calificaciones>> GetCalificacionesPorCLiente(long id);
     }
 }

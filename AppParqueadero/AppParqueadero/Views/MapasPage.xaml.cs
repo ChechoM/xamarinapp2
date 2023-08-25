@@ -11,6 +11,7 @@ using AppParqueadero.Data.Api;
 using AppParqueadero.Data.Models;
 using System.Linq;
 using System.Xml.Linq;
+using System.Threading.Tasks;
 
 namespace AppParqueadero.Views
 {
@@ -61,14 +62,19 @@ namespace AppParqueadero.Views
             
             
         }
-        private   void Map_PinClicked(Client client, object sender, Position posicionClick)
+        private  async Task  Map_PinClicked(Client client, object sender, Position posicionClick)
         {
                
-                contenedorDetalle.IsVisible = true;
-                ClientLocationMap.HeightRequest = 400;
+               
                 _viewModel.Client = client;
                 Position positionFalsa = new Position(6.248932112041483, -75.57290152500107);
-                RutasGoogle rutasGoogle = _viewModel._googleMapsService.GetRuta(positionFalsa, posicionClick);
+                RutasGoogle rutasGoogle = await _viewModel._googleMapsService.GetRuta(positionFalsa, posicionClick);
+                if (rutasGoogle != null)
+                {
+                    contenedorDetalle.IsVisible = true;
+                    ClientLocationMap.HeightRequest = 400;
+
+                }
                 var Distancia = rutasGoogle.routes.Select(x => x.legs.Select(s => s.distance.text).FirstOrDefault()).FirstOrDefault();
                 var TiempoEstimado = rutasGoogle.routes.Select(x => x.legs.Select(s => s.duration.text).FirstOrDefault()).FirstOrDefault();
 
