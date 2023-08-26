@@ -20,7 +20,7 @@ namespace AppParqueadero
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
-            
+            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
         }
     }
 }

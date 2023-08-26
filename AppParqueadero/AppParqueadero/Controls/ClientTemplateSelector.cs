@@ -1,4 +1,5 @@
 ﻿using AppParqueadero.Data.Models;
+using AppParqueadero.Data.Models.Dto;
 using Xamarin.Forms;
 
 namespace AppParqueadero.Controls
@@ -6,32 +7,36 @@ namespace AppParqueadero.Controls
     public class ClientTemplateSelector : DataTemplateSelector
     {
         public DataTemplate DefaultTemplate { get; set; }
-        public DataTemplate OneToFiveTemplate { get; set; }
-        public DataTemplate SixToTenTemplate { get; set; }
+        public DataTemplate CalificacionBaja { get; set; }
+        public DataTemplate CalificacionesMedia { get; set; }
+        public DataTemplate CalificacionesAlta { get; set; }
 
         protected override DataTemplate OnSelectTemplate(object clientObject, BindableObject container)
         {
-            if (!(clientObject is Client client))
+            if (!(clientObject is ReporteVisitasDto client))
             {
                 return DefaultTemplate;
             }
 
-            var dnaLength = client.nit.Length;
-            var lastDigit = client.nit.Substring(dnaLength - 1);
+            var dnaLength = client.PromedioCalificacion;
+            
 
-            if (int.TryParse(lastDigit, out var intValue))
-            {
-
-                if (intValue > 0 && intValue <= 5)
+                if (dnaLength > 0 && dnaLength <= 2)
                 {
-                    return OneToFiveTemplate;
+                    return CalificacionBaja;
                 }
 
-                if (intValue > 5 && intValue <= 10)
+                if (dnaLength == 3)
                 {
-                    return SixToTenTemplate;
+                    return CalificacionesMedia;
                 }
-            }
+
+                if (dnaLength > 3)
+                {
+                    return CalificacionesAlta;
+                }
+
+            
 
             return DefaultTemplate;
         }
