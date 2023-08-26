@@ -19,8 +19,8 @@
         <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="CalificacionesDefaulTemplate" x:DataType="models:Calificaciones">
-                <StackLayout Margin="0,5">
-                    <Frame CornerRadius="15"
+                <StackLayout>
+                    <Frame
                     BackgroundColor="AliceBlue">
                         <Grid ColumnDefinitions="*,*">
                             <Label Text="{Binding Comentario}" TextColor="Black"  FontSize="16"/>
@@ -30,8 +30,8 @@
                 </StackLayout>
             </DataTemplate> 
             <DataTemplate x:Key="CalificacionBaja" x:DataType="models:Calificaciones">
-                <StackLayout Margin="0,5">
-                    <Frame CornerRadius="15"
+                <StackLayout>
+                    <Frame
                     BackgroundColor="LightCoral">
                         <Grid ColumnDefinitions="*,*">
                             <Label Text="{Binding Comentario}" TextColor="white"  FontSize="16"/>
@@ -41,8 +41,8 @@
                 </StackLayout>
             </DataTemplate>
             <DataTemplate x:Key="CalificacionesMedia" x:DataType="models:Calificaciones">
-                <StackLayout Margin="0,5">
-                    <Frame CornerRadius="15"
+                <StackLayout>
+                    <Frame
                     BackgroundColor="AliceBlue">
                         <Grid ColumnDefinitions="*,*">
                             <Label Text="{Binding Comentario}" TextColor="DarkSlateGray"  FontSize="16"/>
@@ -52,8 +52,8 @@
                 </StackLayout>
             </DataTemplate>
             <DataTemplate x:Key="CalificacionesAlta" x:DataType="models:Calificaciones">
-                <StackLayout Margin="0,5">
-                    <Frame CornerRadius="15"
+                <StackLayout>
+                    <Frame
                     BackgroundColor="GreenYellow">
                         <Grid ColumnDefinitions="*,*">
                             <Label Text="{Binding Comentario}" TextColor="White" FontSize="16"/>

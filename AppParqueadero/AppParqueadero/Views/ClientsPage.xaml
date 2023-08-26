@@ -13,13 +13,13 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="ClientDefaultTemplate" x:DataType="models:ReporteVisitasDto">
-                <StackLayout Margin="0,5">
+                <StackLayout>
 
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ClientsViewModel}}, Path=ClientTappedCommand}"
                                               CommandParameter="{Binding Id}"/>
                     </StackLayout.GestureRecognizers>
-                    <Frame CornerRadius="15"
+                    <Frame
                            BackgroundColor="AliceBlue">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -39,12 +39,12 @@
                 </StackLayout>
             </DataTemplate>
             <DataTemplate x:Key="CalificacionBaja" x:DataType="models:ReporteVisitasDto">
-                <StackLayout Margin="0,5">
+                <StackLayout>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ClientsViewModel}}, Path=ClientTappedCommand}"
                                               CommandParameter="{Binding Id}"/>
                     </StackLayout.GestureRecognizers>
-                    <Frame CornerRadius="15"
+                    <Frame
                     BackgroundColor="LightCoral">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -64,12 +64,12 @@
                 </StackLayout>
             </DataTemplate>
             <DataTemplate x:Key="CalificacionesMedia" x:DataType="models:ReporteVisitasDto">
-                <StackLayout Margin="0,5">
+                <StackLayout>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ClientsViewModel}}, Path=ClientTappedCommand}"
                                               CommandParameter="{Binding Id}"/>
                     </StackLayout.GestureRecognizers>
-                    <Frame CornerRadius="15"
+                    <Frame
                     BackgroundColor="AliceBlue">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -89,12 +89,12 @@
                 </StackLayout>
             </DataTemplate>
             <DataTemplate x:Key="CalificacionesAlta" x:DataType="models:ReporteVisitasDto">
-                <StackLayout Margin="0,5">
+                <StackLayout>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ClientsViewModel}}, Path=ClientTappedCommand}"
                                               CommandParameter="{Binding Id}"/>
                     </StackLayout.GestureRecognizers>
-                    <Frame CornerRadius="15"
+                    <Frame
                     BackgroundColor="GreenYellow">
                         <Grid>
                             <Grid.RowDefinitions>

@@ -23,7 +23,7 @@
                 <Entry Text="{Binding Password}" Placeholder="Contraseña" IsPassword="True" />
             </Frame>
             
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}" Style="{StaticResource ButtonPrymary}"/>
+            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}" Style="{StaticResource ButtonSecundary}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
