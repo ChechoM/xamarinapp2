@@ -1,6 +1,7 @@
 ﻿using AppParqueadero.Data.Models;
 using AppParqueadero.Services;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel;
@@ -10,12 +11,14 @@ namespace AppParqueadero.ViewModels
     public class ClientsViewModel : BaseViewModel
     {
         private readonly IClientService _clientService;
+        private readonly IAppUserSettingService _appUserSettingService;
 
-        public ClientsViewModel(IClientService clientService)
+        public ClientsViewModel(IClientService clientService, IAppUserSettingService appUserSettingService)
         {
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
             Title = "Clients";
             _clientService = clientService;
+            _appUserSettingService = appUserSettingService;
         }
 
         public ObservableRangeCollection<Client> Clients { get; set; } = new ObservableRangeCollection<Client>();
@@ -35,7 +38,8 @@ namespace AppParqueadero.ViewModels
                 var clients = await _clientService.GetClientsAsync();
                 if (clients != null)
                 {
-                    Clients.ReplaceRange(clients);
+                    var auxClient = clients.Where(x => x.userId == Convert.ToInt64(_appUserSettingService.IdUser)).ToList();
+                    Clients.ReplaceRange(auxClient);
                 }
             }
             catch (Exception ex)

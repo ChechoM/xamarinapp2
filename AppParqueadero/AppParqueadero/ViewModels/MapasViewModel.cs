@@ -67,7 +67,7 @@ namespace AppParqueadero.ViewModels
             }
 
 
-            return Shell.Current.GoToAsync($"//{nameof(ClientDetallePage)}?{nameof(ClientDetalleViewModel.ClientId)}={Client.id}");
+            return Shell.Current.GoToAsync($"{nameof(ClientDetallePage)}?{nameof(ClientDetalleViewModel.ClientId)}={Client.id}");
         }
 
     }

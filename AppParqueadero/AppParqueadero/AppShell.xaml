@@ -84,24 +84,11 @@
     <TabBar Title="Home" Icon="icon_about.png">
         <ShellContent Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
     </TabBar>
-
-    <FlyoutItem Title="Login" Icon="icon_about.png">
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    </FlyoutItem>
     
     <FlyoutItem Title="Clientes" Icon="icon_about.png">
         <ShellContent Route="ClientsPage" ContentTemplate="{DataTemplate local:ClientsPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Mapas" >
-        <ShellContent Route="MapasPage" ContentTemplate="{DataTemplate local:MapasPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Calificaciones" Icon="icon_about.png">
-        <ShellContent Route="CalificacionesPage" ContentTemplate="{DataTemplate local:CalificacionesPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Cliente detalle" Icon="icon_about.png">
-        <ShellContent Route="ClientDetallePage" ContentTemplate="{DataTemplate local:ClientDetallePage}" />
-    </FlyoutItem>
     <!-- 
         When the Flyout is visible this defines the content to display in the flyout.
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    

@@ -11,8 +11,8 @@
              x:DataType="viewModels:HomeViewModel"
              xmlns:local="clr-namespace:AppParqueadero.Extensions;assembly=AppParqueadero"
              mc:Ignorable="d"
+             Shell.NavBarIsVisible="True"
              x:Class="AppParqueadero.Views.HomePage"
-             Shell.NavBarIsVisible="False"
              BackgroundColor="#91d424">
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
@@ -21,7 +21,7 @@
         <StackLayout BackgroundColor="Transparent">
             <Image Source="{local:ImageResource AppParqueadero.Resources.Images.logo.png}" />
             <Button VerticalOptions="Center" Text="Ir login" Command="{Binding RouteComand}" CommandParameter="1" Style="{StaticResource ButtonPrymary}"/>
-            <Button VerticalOptions="Center" Text="Ir a mapa" Command="{Binding RouteComand}" CommandParameter="2" Style="{StaticResource ButtonPrymary}"/>
+            <Button VerticalOptions="Center" Text="Ir a mapa" Command="{Binding RouteComand}" CommandParameter="2" Style="{StaticResource ButtonPrymary}" Margin="0,5,0,5"/>
             <Button VerticalOptions="Center" Text="Crea un feedback" Command="{Binding RouteComand}" CommandParameter="3" Style="{StaticResource ButtonPrymary}"/>
         </StackLayout>
     </ContentPage.Content>

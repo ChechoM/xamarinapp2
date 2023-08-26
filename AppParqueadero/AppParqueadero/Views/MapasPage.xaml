@@ -7,8 +7,8 @@
              x:DataType="viewModels:MapasViewModel"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="AppParqueadero.Views.MapasPage"
-             BackgroundColor="White"             
-             Shell.NavBarIsVisible="False">
+             BackgroundColor="White"  
+             Title="Parqueaderos en tu zona">
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>

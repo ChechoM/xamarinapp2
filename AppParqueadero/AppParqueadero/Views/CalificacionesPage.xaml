@@ -9,19 +9,19 @@
              x:DataType="viewModels:CalificacionesViewModel"
              mc:Ignorable="d"
              x:Class="AppParqueadero.Views.CalificacionesPage"
-             Shell.NavBarIsVisible="False">
+             Title="Califica tu experiencia">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="7,0,7,0" VerticalOptions="Center">
             <Frame CornerRadius="10" Padding="4" BackgroundColor="#e0e0e0">
                 <Entry Text="{Binding Comentario}" Placeholder="Comentario"  />
             </Frame>
-            <Frame CornerRadius="10" Padding="4" Margin="5" BackgroundColor="#e0e0e0">
+            <Frame CornerRadius="10" Padding="4" Margin="0,15,0,15" BackgroundColor="#e0e0e0">
                 <Entry Text="{Binding Calificacion}" Placeholder="Calificación" />
             </Frame>
             <Frame CornerRadius="10" Padding="4" BackgroundColor="#e0e0e0">
                 <Entry Text="{Binding IdVisita}" Placeholder="Numero de referencia de la visita"  />
             </Frame>
-            <Button VerticalOptions="Center" Text="Enviar" Command="{Binding EnviarCalificacion}" Style="{StaticResource ButtonSecundary}"/>
+            <Button VerticalOptions="Center" Text="Enviar" Command="{Binding EnviarCalificacion}" Style="{StaticResource ButtonSecundary}" Margin="0,15,0,15"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -11,12 +11,16 @@ namespace AppParqueadero
         public AppShell()
         {
             InitializeComponent();
+
             Routing.RegisterRoute(nameof(ClientDetallePage), typeof(ClientDetallePage));
+            Routing.RegisterRoute(nameof(MapasPage), typeof(MapasPage));
+            Routing.RegisterRoute(nameof(CalificacionesPage), typeof(CalificacionesPage));
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            
         }
     }
 }

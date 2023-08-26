@@ -8,6 +8,7 @@ namespace AppParqueadero.Services
     {
         string UserName { get; set; }
         string UserToken { get; set; }
+        string IdUser { get; set; }
         void Clear();
 
     }

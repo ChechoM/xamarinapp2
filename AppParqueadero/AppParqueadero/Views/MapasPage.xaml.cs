@@ -30,7 +30,7 @@ namespace AppParqueadero.Views
         private void _viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             contenedorDetalle.IsVisible = false;
-            ClientLocationMap.HeightRequest = 600;
+            ClientLocationMap.HeightRequest = 500;
             var positionFalsa = new Position(6.248932112041483, -75.57290152500107);
             ClientLocationMap.MoveToRegion(new MapSpan(positionFalsa, 0.05, 0.05));
 
@@ -72,7 +72,7 @@ namespace AppParqueadero.Views
                 if (rutasGoogle != null)
                 {
                     contenedorDetalle.IsVisible = true;
-                    ClientLocationMap.HeightRequest = 400;
+                    ClientLocationMap.HeightRequest = 300;
 
                 }
                 var Distancia = rutasGoogle.routes.Select(x => x.legs.Select(s => s.distance.text).FirstOrDefault()).FirstOrDefault();

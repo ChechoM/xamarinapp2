@@ -35,13 +35,13 @@ namespace AppParqueadero.ViewModels
             switch  (parametro.ToString())
             {
                 case "1":
-                        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                        await Shell.Current.GoToAsync($"{nameof(LoginPage)}");
                     break;
                 case "2":
-                        await Shell.Current.GoToAsync($"//{nameof(MapasPage)}");
+                        await Shell.Current.GoToAsync($"{nameof(MapasPage)}");
                     break;
                 case "3":
-                    await Shell.Current.GoToAsync($"//{nameof(CalificacionesPage)}");
+                    await Shell.Current.GoToAsync($"{nameof(CalificacionesPage)}");
                     break;
                 default: 
                     break;

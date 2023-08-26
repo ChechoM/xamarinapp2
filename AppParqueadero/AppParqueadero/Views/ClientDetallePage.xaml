@@ -13,7 +13,8 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              mc:Ignorable="d"
              x:Class="AppParqueadero.Views.ClientDetallePage"
-             Title="Calificaciones"
+             Title="Detalle parqueadero"
+             
              >
         <ContentPage.Resources>
         <ResourceDictionary>
@@ -119,8 +120,8 @@
                         ItemTemplate="{StaticResource CalificacionesTemplateSelector}">
                     <CollectionView.Header >
                         <Grid ColumnDefinitions="*,*" Background="White ">
-                            <Label Text="Comentario" TextColor="Black" BackgroundColor="White" Padding="10" />
-                            <Label Grid.Column="1" Text="Calificacion" TextColor="black" BackgroundColor="White" Padding="10"/>
+                            <Label Text="Comentario" TextColor="Black" BackgroundColor="White" Padding="10" HorizontalOptions="Center"/>
+                            <Label Grid.Column="1" Text="Calificacion" TextColor="black" BackgroundColor="White" Padding="10" HorizontalOptions="Center"/>
                         </Grid>
                     </CollectionView.Header>
                 </CollectionView>

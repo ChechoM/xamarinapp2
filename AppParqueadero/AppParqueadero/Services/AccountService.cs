@@ -42,6 +42,7 @@ namespace AppParqueadero.Services
                     {
                         _appUserSettingService.UserName = user.UserName;
                         _appUserSettingService.UserToken = user.Token;
+                        _appUserSettingService.UserToken = user.Id.ToString();
                         return true;
                     }
                 }
